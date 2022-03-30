@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+    <title>Spring Boot Persona</title>
+</head>
+<body>
+<div>
+    <h1>Spring Boot Persona</h1>
+    <a href="/agregarPersona"> Agregar Persona</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="/">Volver al index</a>
+    <ul>
+        <div th:each="entry,status : ${persona}">
+            <li>
+                <div></div>
+                <div>
+                    <div>
+                        <h4>
+                            <p>Id = <span th:text="${entry.id}">ID</span></p>
+
+                            <span th:text="${entry.nombre}">NOMBRE</span>
+                            <span th:text="${entry.apellido1}">AP1</span>
+                            <span th:text="${entry.apellido2}">AP2</span>
+
+                        </h4>
+
+                    </div>
+                    <div class="tl-body">
+                        <p><span th:text="${entry.dob}">DOB</span></p>
+                        <p><span th:text="${entry.direccion}">ADDRESS</span></p>
+
+                    </div>
+                </div>
+                <a th:href="@{/editarPersona/{id}(id=${entry.id})}">Editar</a>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a th:href="@{/borrarPersona/{id}(id=${entry.id})}">Borrar</a>
+            </li>
+        </div>
+    </ul>
+</div>
+</body>
+</html>
